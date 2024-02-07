@@ -5,8 +5,11 @@ dnf module enable nodejs:18 -y
 echo -e "\e[36m>>>>>install nodejs<<<<<\e[0m"
 dnf install nodejs -y
 
-echo -e "\e[36m>>>>>add user & navigate to app directory<<<<<\e[0m"
+echo -e "\e[36m>>>>>add user<<<<<\e[0m"
 useradd roboshop
+
+echo -e "\e[36m>>>>>create app directory<<<<<\e[0m"
+rm -rf /app
 mkdir /app
 
 echo -e "\e[36m>>>>>download & unzip app content<<<<<\e[0m"
@@ -19,7 +22,7 @@ cd /app
 npm install
 
 echo -e "\e[36m>>>>>setup service file<<<<<\e[0m"
-cp cart.service /etc/systemd/system/cart.service
+cp /home/centos/roboshop_shell/cart.service /etc/systemd/system/cart.service
 
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"

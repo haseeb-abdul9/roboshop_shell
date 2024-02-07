@@ -7,11 +7,16 @@ dnf install nodejs -y
 
 echo -e "\e[36m>>>>>add user & navigate to app directory<<<<<\e[0m"
 useradd roboshop
+
+echo -e "\e[36m>>>>>create app directory<<<<<\e[0m"
+rm -rf /app
 mkdir /app
 
-echo -e "\e[36m>>>>>download & unzip app content<<<<<\e[0m"
+echo -e "\e[36m>>>>>download app content<<<<<\e[0m"
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
 cd /app
+
+echo -e "\e[36m>>>>>unzip app content<<<<<\e[0m"
 unzip /tmp/catalogue.zip
 
 echo -e "\e[36m>>>>>download & install<<<<<\e[0m"
@@ -19,14 +24,16 @@ cd /app
 npm install
 
 echo -e "\e[36m>>>>>setup service file<<<<<\e[0m"
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop_shell/catalogue.service /etc/systemd/system/catalogue.service
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl start catalogue
 
-echo -e "\e[36m>>>>>set up repo file<<<<<\e[0m"
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+echo -e "\e[36m>>>>>set up mongodb repo file<<<<<\e[0m"
+cp /home/centos/roboshop_shell/mongo.repo /etc/yum.repos.d/mongo.repo
+
+echo -e "\e[36m>>>>>install mongodb client<<<<<\e[0m"
 dnf install mongodb-org-shell -y
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js
+mongo --host mongodb.haseebdevops.online </app/schema/catalogue.js

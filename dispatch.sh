@@ -3,6 +3,9 @@ dnf install golang -y
 
 echo -e "\e[36m>>>>>add user & navigate to app directory<<<<<\e[0m"
 useradd roboshop
+
+echo -e "\e[36m>>>>>create app directory<<<<<\e[0m"
+rm -rf /app
 mkdir /app
 
 echo -e "\e[36m>>>>>download & unzip app content<<<<<\e[0m"
@@ -17,7 +20,7 @@ go get
 go build
 
 echo -e "\e[36m>>>>>setup service file<<<<<\e[0m"
-cp dispatch.service /etc/systemd/system/dispatch.service
+cp /home/centos/roboshop_shell/dispatch.service /etc/systemd/system/dispatch.service
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"
 systemctl daemon-reload

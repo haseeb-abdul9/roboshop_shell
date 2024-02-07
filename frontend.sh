@@ -2,7 +2,7 @@ echo -e "\e[36m>>>>>install nginx<<<<<\e[0m"
 dnf install nginx -y
 
 echo -e "\e[36m>>>>>create conf file<<<<<\e[0m"
-cp roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp /home/centos/roboshop_shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[36m>>>>>remove nginx content<<<<<\e[0m"
 rm -rf /usr/share/nginx/html/*
