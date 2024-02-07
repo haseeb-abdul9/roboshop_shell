@@ -15,6 +15,8 @@ mkdir /app
 echo -e "\e[36m>>>>>download & unzip app content<<<<<\e[0m"
 curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip
 cd /app
+
+echo -e "\e[36m>>>>>unzip app content<<<<<\e[0m"
 unzip /tmp/cart.zip
 
 echo -e "\e[36m>>>>>download & install<<<<<\e[0m"
