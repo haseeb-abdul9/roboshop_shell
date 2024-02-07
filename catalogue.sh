@@ -19,7 +19,7 @@ cd /app
 echo -e "\e[36m>>>>>unzip app content<<<<<\e[0m"
 unzip /tmp/catalogue.zip
 
-echo -e "\e[36m>>>>>download & install<<<<<\e[0m"
+echo -e "\e[36m>>>>>install dependencies<<<<<\e[0m"
 cd /app
 npm install
 
