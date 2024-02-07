@@ -17,7 +17,7 @@ cd /app
 npm install
 
 echo -e "\e[36m>>>>>setup service file<<<<<\e[0m"
-cp user.service /etc/systemd/system/user.service
+cp /root/roboshop_shell/user.service /etc/systemd/system/user.service
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"
 systemctl daemon-reload

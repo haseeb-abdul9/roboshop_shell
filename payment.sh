@@ -19,7 +19,7 @@ cd /app
 pip3.6 install -r requirements.txt
 
 echo -e "\e[36m>>>>>set up service file<<<<\e[0m"
-cp /home/centos/roboshop_shell/payment.service /etc/systemd/system/payment.service
+cp /root/roboshop_shell/payment.service /etc/systemd/system/payment.service
 
 echo -e "\e[36m>>>>>start service<<<<\e[0m"
 systemctl daemon-reload

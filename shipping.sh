@@ -20,7 +20,7 @@ mvn clean package
 mv target/shipping-1.0.jar shipping.jar
 
 echo -e "\e[36m>>>>>copy service file<<<<<\e[0m"
-cp /home/centos/roboshop_shell/shipping.service /etc/systemd/system/shipping.service
+cp /root/roboshop_shell/shipping.service /etc/systemd/system/shipping.service
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"
 systemctl daemon-reload

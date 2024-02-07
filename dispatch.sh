@@ -20,7 +20,7 @@ go get
 go build
 
 echo -e "\e[36m>>>>>setup service file<<<<<\e[0m"
-cp /home/centos/roboshop_shell/dispatch.service /etc/systemd/system/dispatch.service
+cp /root/roboshop_shell/dispatch.service /etc/systemd/system/dispatch.service
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"
 systemctl daemon-reload

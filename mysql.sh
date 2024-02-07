@@ -2,7 +2,7 @@ echo -e "\e[36m>>>>>disable mysql 5.7<<<<<\e[0m"
 dnf module disable mysql -y
 
 echo -e "\e[36m>>>>>set up repo file<<<<\e[0m"
-cp /home/centos/roboshop_shell/mysql.repo /etc/yum.repos.d/mysql.repo
+cp /root/roboshop_shell/mysql.repo /etc/yum.repos.d/mysql.repo
 
 echo -e "\e[36m>>>>>install mysql server<<<<\e[0m"
 dnf install mysql-community-server -y

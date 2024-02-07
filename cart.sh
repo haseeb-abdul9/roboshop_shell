@@ -22,7 +22,7 @@ cd /app
 npm install
 
 echo -e "\e[36m>>>>>setup service file<<<<<\e[0m"
-cp /home/centos/roboshop_shell/cart.service /etc/systemd/system/cart.service
+cp /root/roboshop_shell/cart.service /etc/systemd/system/cart.service
 
 
 echo -e "\e[36m>>>>>start service<<<<<\e[0m"
