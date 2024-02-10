@@ -1,17 +1,29 @@
-echo -e "\e[36m>>>>>install nginx<<<<<\e[0m"
-dnf install nginx -y
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source=$script_path/common.sh
 
-echo -e "\e[36m>>>>>create conf file<<<<<\e[0m"
-cp /root/roboshop_shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+func_print_head "Install Nginx"
+dnf install nginx -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[36m>>>>>remove nginx content<<<<<\e[0m"
-rm -rf /usr/share/nginx/html/*
+func_print_head "Copy conf file"
+cp ${script_path}/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>$log_file
+func_stat_check $?
 
-echo -e "\e[36m>>>>>download & unzip app content<<<<<\e[0m"
-curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-cd /usr/share/nginx/html
-unzip /tmp/frontend.zip
+func_print_head "Remove Nginx content"
+rm -rf /usr/share/nginx/html/* &>>$log_file
+func_stat_check $?
 
-echo -e "\e[36m>>>>>start service<<<<<\e[0m"
-systemctl restart nginx
-systemctl enable nginx
+func_print_head "Download app content"
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>$log_file
+func_stat_check $?
+cd /usr/share/nginx/html &>>$log_file
+func_stat_check $?
+unzip /tmp/frontend.zip &>>$log_file
+func_stat_check $?
+
+func_print_head "Start service"
+systemctl restart nginx &>>$log_file
+func_stat_check $?
+systemctl enable nginx &>>$log_file
+func_stat_check $?

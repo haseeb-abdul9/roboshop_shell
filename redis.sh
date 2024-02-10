@@ -1,13 +1,21 @@
-echo -e "\e[36m>>>>>install redis repo<<<<\e[0m"
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source=$script_path/common.sh
 
-echo -e "\e[36m>>>>>enable & install redis 6.2<<<<\e[0m"
-dnf module enable redis:remi-6.2 -y
-dnf install redis -y
+func_print_head "Download redis repo"
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[36m>>>>>change listen port<<<<\e[0m"
-sed -i -e "s|127.0.0.1|0.0.0.0|" /etc/redis.conf /etc/redis/redis.conf
+func_print_head "Install redis"
+dnf module enable redis:remi-6.2 -y &>>$log_file
+dnf install redis -y &>>$log_file
+func_stat_check $?
 
-echo -e "\e[36m>>>>>start service<<<<\e[0m"
-systemctl enable redis
-systemctl start redis
+func_print_head "Edit listen port"
+sed -i -e "s|127.0.0.1|0.0.0.0|" /etc/redis.conf /etc/redis/redis.conf &>>$log_file
+func_stat_check $?
+
+func_print_head "Start service"
+systemctl enable redis &>>$log_file
+systemctl restart redis &>>$log_file
+func_stat_check $?
