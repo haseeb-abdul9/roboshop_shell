@@ -54,7 +54,6 @@ func_systemd_setup() {
   func_stat_check $?
 }
 
-
 func_app_prereq() {
   func_print_head "add application user"
   id ${app_user} &>>$log_file
