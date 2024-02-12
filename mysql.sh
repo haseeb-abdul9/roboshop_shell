@@ -3,10 +3,12 @@ script_path=$(dirname "$script")
 source $script_path/common.sh
 mysql_root_pass=$1
 
-if [ -z "mysql_root_pass" ]; then
+if [ -z "$mysql_root_pass" ]; then
     echo mysql_root_pass missing
-    exit
+    exit 1
 fi
+
+
 func_print_head "configure mysql repo"
 dnf module disable mysql -y &>>$log_file
 func_stat_check $?
