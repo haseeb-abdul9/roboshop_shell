@@ -1,6 +1,6 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
-source=$script_path/common.sh
+source $script_path/common.sh
 
 func_print_head "Setup mngo repo"
 cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
