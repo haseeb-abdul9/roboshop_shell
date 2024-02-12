@@ -81,6 +81,7 @@ func_app_prereq() {
 func_nodejs() {
   func_print_head "Disable Nodejs"
   dnf module disable nodejs -y &>>$log_file
+  func_stat_check $?
 
   func_print_head "Enable Nodejs 18"
   dnf module enable nodejs:18 -y &>>$log_file
