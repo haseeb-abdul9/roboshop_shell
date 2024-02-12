@@ -17,4 +17,4 @@ func_stat_check $?
 func_print_head "Start service"
 systemctl enable mongod &>>$log_file
 systemctl restart mongod &>>$log_file
-func_stat_check
+func_stat_check $?
