@@ -54,13 +54,13 @@ func_systemd_setup() {
   func_stat_check $?
 }
 
+
 func_app_prereq() {
   func_print_head "add application user"
-  id $app_user &>>$log_file
+  id ${app_user} &>>$log_file
     if [ $? -ne 0 ]; then
-      useradd ${app_user}
+      useradd ${app_user} &>>$log_file
     fi
-  useradd ${app_user}
   func_stat_check $?
 
   func_print_head "Navigate to app directory"
