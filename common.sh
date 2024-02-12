@@ -43,7 +43,7 @@ func_load_schema() {
 }
 
 func_systemd_setup() {
-  func_print_headsetup "Service file"
+  func_print_headset "set Service file"
   cp /root/roboshop_shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
   func_stat_check $?
 
