@@ -128,7 +128,6 @@ func_python() {
   func_stat_check $?
   
   func_print_head "Change pass"
-  #sed -i -e "s|mysql_root_pass|${mysql_root_pass}" ${script_path}/payment.service &>>$log_file
   sed -i -e "s|mysql_root_pass|${mysql_root_pass}|" "${script_path}/payment.service" &>> "$log_file"
   func_stat_check $?
   func_systemd_setup
