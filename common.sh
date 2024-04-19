@@ -28,7 +28,7 @@ func_load_schema() {
       func_stat_check $?
 
       func_print_head "load schema"
-      mongo --host mongodb-dev.haseebdevops.online </app/schema/catalogue.js &>>${log_file}
+      mongo --host mongodb-dev.haseebdevops.online </app/schema/${component}.js &>>${log_file}
       func_stat_check $?
   fi
   if [ "$load_schema" == "mysql" ]; then
@@ -37,7 +37,7 @@ func_load_schema() {
       func_stat_check $?
 
       func_print_head "Change mysql default password"
-      mysql -h mysql-dev.haseebdevops.online -uroot -p${mysql_root_pass} < /app/schema/shipping.sql &>>${log_file}
+      mysql -h mysql-dev.haseebdevops.online -uroot -p${mysql_root_pass} < /app/schema/${component}.sql &>>${log_file}
       func_stat_check $?
   fi
 }
